@@ -5,15 +5,15 @@ namespace App\Entities;
 use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Data;
 
-class VehicleMotorcyclePropertyEntity extends Data
+class RegisterEntity extends Data
 {
     public function __construct(
         #[Required]
-        public string $engine,
+        public string $name,
         #[Required]
-        public string $suspension,
+        public string $email,
         #[Required]
-        public string $transmission,
+        public string $password,
     ) {
     }
 }

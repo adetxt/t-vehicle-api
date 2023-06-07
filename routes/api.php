@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,11 @@ Route::group([
 ], function () {
     Route::apiResource('vehicles', VehicleController::class);
     Route::apiResource('sales', SaleController::class)->except('update');
+
+    Route::prefix('auth')->group(function () {
+        Route::post('login', [AuthController::class, "login"]);
+        Route::post('register', [AuthController::class, "register"]);
+        Route::post('logout', [AuthController::class, "logout"]);
+        Route::post('me', [AuthController::class, "me"]);
+    });
 });
