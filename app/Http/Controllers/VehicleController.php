@@ -11,6 +11,7 @@ class VehicleController extends Controller
     public function __construct(
         protected VehicleService $vehicleSvc
     ) {
+        $this->middleware('auth:api');
     }
 
     /**

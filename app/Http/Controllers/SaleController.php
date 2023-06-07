@@ -11,6 +11,7 @@ class SaleController extends Controller
     public function __construct(
         protected SaleService $saleService
     ) {
+        $this->middleware('auth:api');
     }
 
     /**
