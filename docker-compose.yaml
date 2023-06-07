@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 8080:80
+    environment:
+      DB_HOST: mongo
+      DB_PORT: 27017
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.2.24-bionic
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - ./mongodata:/data/db
