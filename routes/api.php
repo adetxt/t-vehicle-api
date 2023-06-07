@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\VehicleController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +19,5 @@ Route::group([
     'middleware' => ['api', 'rest'],
 ], function () {
     Route::apiResource('vehicles', VehicleController::class);
+    Route::apiResource('sales', SaleController::class)->except('update');
 });

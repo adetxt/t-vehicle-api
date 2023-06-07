@@ -6,21 +6,15 @@ use Spatie\LaravelData\Attributes\Validation\Required;
 use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Data;
 
-class VehicleEntity extends Data
+class VehicleCarPropertyEntity extends Data
 {
     public function __construct(
-        #[Required, Min(1900)]
-        public int $year,
         #[Required]
-        public string $color,
-        #[Required]
-        public float $price,
-        #[Required]
-        public int $stock,
+        public string $engine,
+        #[Required, Min(1)]
+        public int $passenger_capacity,
         #[Required]
         public string $type,
-        #[Required]
-        public array $properties
     ) {
     }
 }

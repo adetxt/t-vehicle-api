@@ -12,5 +12,6 @@ interface VehicleService
     public function getVehicleByID(string $id): Vehicle;
     public function store(VehicleEntity $data);
     public function update(VehicleEntity $data, string $id);
+    public function updateStock(string $id, int $stock);
     public function destroy(string $id);
 }

@@ -32,7 +32,12 @@ class VehicleService implements VehicleServiceInterface
 
     public function update(VehicleEntity $data, string $id)
     {
-        $this->vehicleRepo->update($data, $id);
+        $this->vehicleRepo->update($data->toArray(), $id);
+    }
+
+    public function updateStock(string $id, int $stock)
+    {
+        $this->vehicleRepo->update(['stock' => $stock], $id);
     }
 
     public function destroy(string $id)

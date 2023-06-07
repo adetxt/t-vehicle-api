@@ -16,7 +16,7 @@ class VehicleRepository implements VehicleRepositoryInterface
 
     public function getVehicleByID(string $id): Vehicle
     {
-        return Vehicle::find($id);
+        return Vehicle::findOrFail($id);
     }
 
     public function store(VehicleEntity $data)
@@ -24,9 +24,9 @@ class VehicleRepository implements VehicleRepositoryInterface
         Vehicle::create($data->all());
     }
 
-    public function update(VehicleEntity $data, string $id)
+    public function update(array $data, string $id)
     {
-        Vehicle::where('_id', $id)->update($data->all());
+        Vehicle::where('_id', $id)->update($data);
     }
 
     public function destroy(string $id)

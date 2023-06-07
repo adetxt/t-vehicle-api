@@ -8,7 +8,7 @@ class Vehicle extends Model
 {
     protected $collection = 'vehicles';
 
-    protected $fillable = ["year", "color", "price", "stocks", "type", "properties"];
+    protected $fillable = ["year", "color", "price", "stock", "type", "properties"];
 
     protected $casts = [
         'price' => 'float',

@@ -22,6 +22,16 @@ class AppServiceProvider extends ServiceProvider
             \App\Interfaces\VehicleService::class,
             \App\Services\VehicleService::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\SaleRepository::class,
+            \App\Repositories\SaleRepository::class
+        );
+
+        $this->app->bind(
+            \App\Interfaces\SaleService::class,
+            \App\Services\SaleService::class
+        );
     }
 
     /**
