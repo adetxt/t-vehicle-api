@@ -6,6 +6,7 @@ use App\Entities\SaleEntity;
 use App\Interfaces\SaleRepository as SaleRepositoryInterface;
 use App\Models\Sale;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Illuminate\Support\Facades\DB;
 
 class SaleRepository implements SaleRepositoryInterface
@@ -37,5 +38,24 @@ class SaleRepository implements SaleRepositoryInterface
     {
         $sale = Sale::findOrFail($id);
         $sale->delete();
+    }
+
+    public function reportAllVehicles(): SupportCollection
+    {
+        return Sale::raw(function ($collection) {
+            return $collection->aggregate([
+                [
+                    '$group' => [
+                        "_id" => '$vehicle_id',
+                        "total" => [
+                            '$sum' => '$total_price'
+                        ],
+                        "quantity" => [
+                            '$sum' => '$quantity'
+                        ]
+                    ]
+                ]
+            ]);
+        });
     }
 }

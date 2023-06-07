@@ -32,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
             \App\Interfaces\SaleService::class,
             \App\Services\SaleService::class
         );
+
+        $this->app->bind(
+            \App\Interfaces\ReportService::class,
+            \App\Services\ReportService::class
+        );
     }
 
     /**

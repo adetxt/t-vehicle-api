@@ -11,7 +11,7 @@ class VehicleRepository implements VehicleRepositoryInterface
 {
     public function getVehicles(): Collection
     {
-        return Vehicle::all();
+        return Vehicle::latest()->get();
     }
 
     public function getVehicleByID(string $id): Vehicle

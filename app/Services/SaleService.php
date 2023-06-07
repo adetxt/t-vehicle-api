@@ -35,12 +35,12 @@ class SaleService implements SaleServiceInterface
         }
 
         $data->setTotalPrice($vehicle->price * $data->quantity);
+        $data->setUserId(auth()->id());
 
         $sale = $this->saleRepository->create($data);
 
         return $sale;
     }
-
 
     public function delete($id)
     {

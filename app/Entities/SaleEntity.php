@@ -9,6 +9,7 @@ use Spatie\LaravelData\Data;
 class SaleEntity extends Data
 {
     public ?int $total_price;
+    public ?string $user_id;
 
     public function __construct(
         #[Required]
@@ -21,6 +22,11 @@ class SaleEntity extends Data
     public function setTotalPrice(int $total_price): void
     {
         $this->total_price = $total_price;
+    }
+
+    public function setUserId(string $user_id): void
+    {
+        $this->user_id = $user_id;
     }
 
     public function toArray(): array

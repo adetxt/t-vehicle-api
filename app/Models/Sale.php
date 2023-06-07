@@ -8,7 +8,7 @@ class Sale extends Model
 {
     protected $collection = 'sales';
 
-    protected $fillable = ["vehicle_id", "quantity", "total_price"];
+    protected $fillable = ["vehicle_id", "user_id", "quantity", "total_price"];
 
     protected $casts = [
         'quantity' => 'int',
